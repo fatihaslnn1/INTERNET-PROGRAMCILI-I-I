@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <link rel="stylesheet" href="lib/style.css" />
+    <script src="lib/script.js"></script>
+    <style>
+      h1 {
+        color: green;
+        background-color: white;
+      }
+      div {
+        border: 5px solid black;
+        margin-top: 150px;
+        margin-left: 150px;
+        margin-right: 150px;
+        margin-bottom: 150px;
+        //padding-left:100px;
+        //padding-right:100px;
+        //padding-top:100px;
+        padding: 100px;
+        background-color: pink;
+      }
+       table , td , th {
+         border: 1px solid black;
+       }
+       table{
+         border-collapse:collapse;
+       }
+       } 
+    </style>
+  </head>
+  <body>
+    <h1></h1>
+
+    <h1>Fatih Aslan</h1>
+<table>
+    <tr>
+      <th>Ad</th>
+      <th>Soyad</th>
+      <th>Email</th>
+    </tr>
+
+    <tr>
+      <td>Fatih</td>
+      <td>Aslan</td>
+      <td>fatihasllnn38gmail.com</td>
+</table>
+  </body>
+</html>
