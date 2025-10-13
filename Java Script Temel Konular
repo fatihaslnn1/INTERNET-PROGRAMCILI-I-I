@@ -1,0 +1,64 @@
+console.log("Hello World")
+
+let maasHakan = 5000;
+let maasNur = 5000;
+let zam = 0.6;
+console.log(maasHakan + (maasHakan *zam)); 
+console.log(maasNur + (maasNur *zam)); 
+
+var urunAdi = "İphone11 Pro Max";
+var urunFiyat = "20000"
+console.log(typeof urunAdi)
+console.log(Number(urunFiyat))
+console.log(typeof parseInt(urunFiyat))
+var sayi1 = "10"
+var sayi2 = "20"
+console.log(Number(sayi1)  + parseInt(sayi2))
+
+let sayi3 = "10"
+let sayi4 = "20"
+console.log((sayi3.toString()+ sayi4.toString()))
+let isim = "Fatih"
+let soyisim = "Aslan"
+console.log(isim +' '+ soyisim)
+let sinavNotu = 60
+let basariNotu = (sinavNotu >50 )
+console.log(basariNotu)
+let yas;
+console.log(typeof yas)
+if(yas  !=undefined)
+{
+
+
+}
+yas = '';
+
+let ogrAdi = "Fatih"
+let ogrSoyadi = "Aslan"
+let ogrDogumTarihi = 2015
+let not1 = 70 , not2 = 70 , not3 = 80;
+let ortalama = (not1+not2+not3)/3
+let basarilimi = ortalama >50
+let suankiYil = new Date().getFullYear()
+
+let ogrYas = suankiYil - ogrDogumTarihi
+console.log(ogrYas)
+
+let sonuc;
+let a=4; b=6; c=10;
+
+sonuc = a+b
+sonuc = a-b
+sonuc = a*b
+sonuc = a/b
+sonuc = a%b
+sonuc = a++
+console.log(sonuc)
+sonuc = --a
+console.log(sonuc)
+sonuc = ++a
+a = b 
+a+=b // a = a + b
+a-=b // a = a - b
+a*=b // a = a * b
+a/=b // a = a / b
