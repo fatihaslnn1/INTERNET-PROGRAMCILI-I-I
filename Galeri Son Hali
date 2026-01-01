@@ -106,7 +106,7 @@
                     <p class="lead text-body-secondary">Türkiye'nin En Ucuz ve Güvenilir Araç Alım Satım Merkezi</p>
                     <p>
                         <a href="https://www.google.com/maps/search/Kayseri Üniversitesi 15 Temmuz Yerleşkesi" target="_blank" class="btn btn-primary my-2">Konum 📍</a>
-                        <a href="#" class="btn btn-secondary my-2">Gizlilik Hakları</a>
+                        <button type="button" class="btn btn-secondary my-2" data-bs-toggle="modal" data-bs-target="#gizlilikModal">Gizlilik Hakları</button>
                     </p>
                 </div>
             </div>
@@ -235,5 +235,28 @@
         renderIlanlar();
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <div class="modal fade" id="gizlilikModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content text-start text-dark">
+            <div class="modal-header">
+                <h5 class="modal-title fw-bold">Aslan Otomotiv | Gizlilik Politikası</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Kapat"></button>
+            </div>
+            <div class="modal-body p-4" style="line-height: 1.8; font-family: 'Georgia', serif;">
+                <p><strong>Aslan Otomotiv</strong> olarak, otomotiv sektöründeki köklü güven anlayışımızı dijital platformlarımıza da taşıyarak, siz değerli ziyaretçilerimizin veri gizliliğini en yüksek standartlarda muhafaza ediyoruz. İşbu gizlilik beyanı, <strong>aslanotomotiv.com</strong> üzerinden gerçekleştirdiğiniz her türlü etkileşimin, Türkiye Cumhuriyeti Anayasası ve 6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) ile tam uyumlu bir şekilde yönetildiğini taahhüt eder.</p>
+                <p>Sitemiz üzerinde sunulan araç portföyünü incelemeniz, favori listeleri oluşturmanız veya iletişim kanallarımız aracılığıyla uzman kadromuza soru yöneltmeniz esnasında paylaşılan tüm veriler, "kurumsal sır" statüsünde korunmaktadır. Firmamız, dijital ortamda toplanan isim, iletişim bilgisi ve araç tercihi gibi verileri, sadece müşteri deneyimini kişiselleştirmek ve satın alma süreçlerinizde size en doğru opsiyonları sunabilmek amacıyla işlemektedir.</p>
+                <p>Aslan Otomotiv’in şeffaflık ilkesi uyarınca, verileriniz hiçbir suretle ticari amaç güden üçüncü taraf kurumlarla, veri madenciliği şirketleriyle veya reklam ağlarıyla paylaşılmaz. Web sitemizdeki WhatsApp entegrasyonu ve soru-cevap paneli üzerinden iletilen mesajlar, uçtan uca gizlilik prensibiyle yalnızca yetkili satış temsilcilerimiz tarafından incelenmekte ve yanıtlandıktan sonra arşivlenmektedir.</p>
+                <p>Teknolojik altyapımız, siber güvenlik tehditlerine karşı sürekli olarak güncellenmekte olup, kullanıcılarımızın "Aslan Gibi Güven" ilkesini her aşamada hissetmesi hedeflenmektedir. Konum servisleri ve çerez kullanımı, yalnızca sitenin işlevselliğini artırmak ve Kayseri merkezli fiziksel plazamıza olan erişiminizi kolaylaştırmak için teknik bir zorunluluk olarak kullanılmaktadır.</p>
+                <p>Ziyaretçilerimiz, bu platformu kullanarak sunulan gizlilik şartlarını kabul etmiş sayılırlar. Aslan Otomotiv, dijital güvenliğinizi korumak adına gerekli gördüğü durumlarda bu politikada güncelleme yapma hakkını saklı tutar. Sektördeki liderliğimizi, verilerinize duyduğumuz saygı ve koruma bilinciyle birleştirerek sizlere hizmet vermeye devam etmekteyiz.</p>
+                <div class="mt-4 pt-3 border-top text-center text-muted small">
+                    © 2026 Aslan Otomotiv San. ve Tic. Ltd. Şti. - Tüm Hakları Saklıdır.
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Okudum, Anladım</button>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
