@@ -105,7 +105,7 @@
                     <h1 class="fw-bold">ASLAN OTOMOTİV</h1>
                     <p class="lead text-body-secondary">Türkiye'nin En Ucuz ve Güvenilir Araç Alım Satım Merkezi</p>
                     <p>
-                        <a href="#" class="btn btn-primary my-2">Konum 📍</a>
+                        <a href="https://www.google.com/maps/search/Kayseri Üniversitesi 15 Temmuz Yerleşkesi" target="_blank" class="btn btn-primary my-2">Konum 📍</a>
                         <a href="#" class="btn btn-secondary my-2">Gizlilik Hakları</a>
                     </p>
                 </div>
