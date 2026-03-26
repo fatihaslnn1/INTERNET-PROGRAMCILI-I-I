@@ -1,0 +1,137 @@
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
+using System.Windows.Forms;
+
+namespace WindowsFormsApp8
+{
+    public partial class Form1 : Form
+    {
+        
+        string[] kelimeler = {
+            "algoritma", "bilgisayar", "yazilim", "donanim", "arayuz", "veritabani",
+            "islemci", "klavye", "kamera", "sensor", "robotik", "otonom", "yapayzeka",
+            "internet", "sunucu", "kodlama", "devre", "direnc", "motor", "batarya",
+            "ekran", "gelecek", "teknoloji", "sistem", "analiz", "tasarim", "kontrol",
+            "sinyal", "veri", "bulut", "siber", "guvenlik", "kripto", "blokzincir",
+            "mobil", "uygulama", "tablet", "kulaklik", "mikrofon", "hoparlor", "fare",
+            "bellek", "disk", "kablo", "modem", "wifi", "bluetooth", "enerji", "isletim", "hafiza"
+        };
+
+        string secilenKelime;
+        char[] gosterilenHali;
+        int yanlisHak = 6;
+        List<char> denenenler = new List<char>();
+
+        public Form1()
+        {
+            InitializeComponent();
+            
+            this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
+            OyunBaslat();
+        }
+
+       
+        private void OyunBaslat()
+        {
+            Random rnd = new Random();
+            secilenKelime = kelimeler[rnd.Next(kelimeler.Length)];
+            gosterilenHali = new string('_', secilenKelime.Length).ToCharArray();
+            yanlisHak = 6;
+            denenenler.Clear();
+
+            label1.Text = string.Join(" ", gosterilenHali);
+            label2.Text = "Kalan Hak: 6";
+            textBox1.Clear();
+
+            
+            pictureBox1.Invalidate();
+        }
+
+        private void Form1_Load(object sender, EventArgs e) { }
+
+        
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(textBox1.Text)) return;
+
+            char tahmin = char.ToLower(textBox1.Text[0]);
+            textBox1.Clear();
+            textBox1.Focus();
+
+            if (denenenler.Contains(tahmin))
+            {
+                MessageBox.Show("Bu harfi zaten denedin!");
+                return;
+            }
+            denenenler.Add(tahmin);
+
+            if (secilenKelime.Contains(tahmin))
+            {
+                for (int i = 0; i < secilenKelime.Length; i++)
+                {
+                    if (secilenKelime[i] == tahmin) gosterilenHali[i] = tahmin;
+                }
+            }
+            else
+            {
+                yanlisHak--;
+                pictureBox1.Invalidate(); 
+            }
+
+            label1.Text = string.Join(" ", gosterilenHali);
+            label2.Text = "Kalan Hak: " + yanlisHak;
+
+            OyunSonuKontrol();
+        }
+
+        
+        private void OyunSonuKontrol()
+        {
+            if (!label1.Text.Contains('_'))
+            {
+                MessageBox.Show("Tebrikler Kazandın! Kelime: " + secilenKelime.ToUpper());
+                OyunBaslat();
+            }
+            else if (yanlisHak <= 0)
+            {
+                MessageBox.Show("Adam Öldü! Kelime: " + secilenKelime.ToUpper());
+                OyunBaslat();
+            }
+        }
+
+       
+        private void button2_Click(object sender, EventArgs e)
+        {
+            OyunBaslat();
+        }
+
+        
+        private void pictureBox1_Paint(object sender, PaintEventArgs e)
+        {
+            Graphics g = e.Graphics;
+            Pen kalem = new Pen(Color.Black, 3);
+
+            
+            g.DrawLine(kalem, 10, 230, 100, 230); 
+            g.DrawLine(kalem, 30, 230, 30, 20);   
+            g.DrawLine(kalem, 30, 20, 120, 20);   
+            g.DrawLine(kalem, 120, 20, 120, 50); 
+
+            
+            if (yanlisHak <= 5) g.DrawEllipse(kalem, 100, 50, 40, 40); 
+            if (yanlisHak <= 4) g.DrawLine(kalem, 120, 90, 120, 160);
+            if (yanlisHak <= 3) g.DrawLine(kalem, 120, 100, 90, 130);  
+            if (yanlisHak <= 2) g.DrawLine(kalem, 120, 100, 150, 130); 
+            if (yanlisHak <= 1) g.DrawLine(kalem, 120, 160, 90, 200);  
+            if (yanlisHak <= 0) g.DrawLine(kalem, 120, 160, 150, 200); 
+        }
+
+       
+        private void label1_Click(object sender, EventArgs e) { }
+        private void label2_Click(object sender, EventArgs e) { }
+        private void textBox1_TextChanged(object sender, EventArgs e) { }
+        private void pictureBox1_Click(object sender, EventArgs e) { }
+    }
+}
