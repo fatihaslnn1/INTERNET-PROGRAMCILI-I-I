@@ -1,0 +1,88 @@
+@model IEnumerable<Proje2.Models.Comment>
+@{
+    ViewData["Title"] = "Yorumlar - Admin";
+    var pending = Model.Where(c => !c.IsApproved).ToList();
+    var approved = Model.Where(c => c.IsApproved).ToList();
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="fw-bold">💬 Yorum Yönetimi</h2>
+    <span class="badge bg-warning text-dark fs-6">@pending.Count bekleyen yorum</span>
+</div>
+
+@if (pending.Any())
+{
+    <h5 class="text-warning fw-bold">⏳ Onay Bekleyen Yorumlar</h5>
+    <div class="table-responsive mb-5">
+        <table class="table table-hover align-middle border">
+            <thead class="table-warning">
+                <tr>
+                    <th>Film</th>
+                    <th>Yazar</th>
+                    <th>Yorum</th>
+                    <th>Tarih</th>
+                    <th>İşlem</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var comment in pending)
+                {
+                    <tr>
+                        <td class="fw-bold">@comment.Movie.Title</td>
+                        <td>@comment.AuthorName</td>
+                        <td>@comment.Content</td>
+                        <td>@comment.CreatedAt.ToString("dd.MM.yyyy HH:mm")</td>
+                        <td>
+                            <form asp-action="ApproveComment" asp-route-id="@comment.Id" method="post" class="d-inline">
+                                <button type="submit" class="btn btn-sm btn-success me-1">✔ Onayla</button>
+                            </form>
+                            <form asp-action="DeleteComment" asp-route-id="@comment.Id" method="post" class="d-inline"
+                                  onsubmit="return confirm('Bu yorumu silmek istediğinize emin misiniz?')">
+                                <button type="submit" class="btn btn-sm btn-danger">✕ Sil</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+    <div class="alert alert-success mb-4">Bekleyen yorum yok. 🎉</div>
+}
+
+@if (approved.Any())
+{
+    <h5 class="text-success fw-bold">✅ Onaylı Yorumlar</h5>
+    <div class="table-responsive">
+        <table class="table table-hover align-middle border">
+            <thead class="table-success">
+                <tr>
+                    <th>Film</th>
+                    <th>Yazar</th>
+                    <th>Yorum</th>
+                    <th>Tarih</th>
+                    <th>İşlem</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var comment in approved)
+                {
+                    <tr>
+                        <td class="fw-bold">@comment.Movie.Title</td>
+                        <td>@comment.AuthorName</td>
+                        <td>@comment.Content</td>
+                        <td>@comment.CreatedAt.ToString("dd.MM.yyyy HH:mm")</td>
+                        <td>
+                            <form asp-action="DeleteComment" asp-route-id="@comment.Id" method="post" class="d-inline"
+                                  onsubmit="return confirm('Bu yorumu silmek istediğinize emin misiniz?')">
+                                <button type="submit" class="btn btn-sm btn-danger">✕ Sil</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}

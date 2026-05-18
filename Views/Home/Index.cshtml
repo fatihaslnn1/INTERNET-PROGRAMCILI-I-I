@@ -1,0 +1,55 @@
+@model IEnumerable<Proje2.Models.Movie>
+@{
+    ViewData["Title"] = "Filmler";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="fw-bold">🎬 Vizyondaki Filmler</h2>
+    <span class="text-muted">@Model.Count() film listeleniyor</span>
+</div>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info text-center">
+        <h5>Henüz film eklenmemiş.</h5>
+        <p class="mb-0">Admin olarak giriş yapıp film ekleyebilirsiniz.</p>
+    </div>
+}
+else
+{
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach (var movie in Model)
+        {
+            <div class="col">
+                <div class="card h-100 shadow-sm movie-card">
+                    @if (!string.IsNullOrEmpty(movie.PhotoPath))
+                    {
+                        <img src="@movie.PhotoPath" class="card-img-top" alt="@movie.Title" />
+                    }
+                    else
+                    {
+                        <div class="bg-secondary d-flex align-items-center justify-content-center" style="height:300px;">
+                            <span class="text-white fs-1">🎥</span>
+                        </div>
+                    }
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">@movie.Title</h5>
+                        <p class="card-text text-muted small">
+                            📅 @movie.ReleaseDate.ToString("dd MMMM yyyy")
+                        </p>
+                        <p class="card-text">
+                            @(movie.Summary.Length > 100 ? movie.Summary.Substring(0, 100) + "..." : movie.Summary)
+                        </p>
+                    </div>
+                    <div class="card-footer d-flex justify-content-between align-items-center">
+                        <small class="text-muted">
+                            💬 @movie.Comments.Count yorum
+                        </small>
+                        <a asp-controller="Home" asp-action="Movie" asp-route-id="@movie.Id"
+                           class="btn btn-dark btn-sm">Detay & Yorum Yap</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
